@@ -12,6 +12,7 @@
 		08050B701DFC045200BF0D44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08050B6E1DFC045200BF0D44 /* Main.storyboard */; };
 		08050B721DFC045200BF0D44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08050B711DFC045200BF0D44 /* Assets.xcassets */; };
 		08050B751DFC045200BF0D44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08050B731DFC045200BF0D44 /* LaunchScreen.storyboard */; };
+		08050B7D1DFC04D500BF0D44 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08050B7C1DFC04D500BF0D44 /* DataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		08050B711DFC045200BF0D44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08050B741DFC045200BF0D44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		08050B761DFC045200BF0D44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08050B7C1DFC04D500BF0D44 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				08050B711DFC045200BF0D44 /* Assets.xcassets */,
 				08050B731DFC045200BF0D44 /* LaunchScreen.storyboard */,
 				08050B761DFC045200BF0D44 /* Info.plist */,
+				08050B7C1DFC04D500BF0D44 /* DataModel.swift */,
 			);
 			path = AmusementParkPassGeneratorTH;
 			sourceTree = "<group>";
@@ -91,7 +94,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = JarICT;
 				TargetAttributes = {
 					08050B661DFC045100BF0D44 = {
@@ -138,6 +141,7 @@
 			files = (
 				08050B6D1DFC045200BF0D44 /* ViewController.swift in Sources */,
 				08050B6B1DFC045200BF0D44 /* AppDelegate.swift in Sources */,
+				08050B7D1DFC04D500BF0D44 /* DataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +185,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -230,6 +235,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -297,6 +303,7 @@
 				08050B7B1DFC045200BF0D44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
