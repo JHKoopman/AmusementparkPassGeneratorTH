@@ -34,6 +34,7 @@ enum GuestType {
 
 protocol Entrant {
     var areaAccess: [Area] { get }
+    var identifier: String { get }
 }
 
 protocol Guest: Entrant {
@@ -104,6 +105,7 @@ class Employee: Worker {
     var state: String
     var zip: String
     var areaAccess: [Area]
+    var identifier: String
     
     init(first: String, last: String, adress: String, city: String, state: String, zip: String, type: EmployeeType) {
         self.firstName = first
@@ -112,6 +114,7 @@ class Employee: Worker {
         self.city = city
         self.state = state
         self.zip = zip
+        self.identifier = first
         
         switch type {
         case .Food:
@@ -125,38 +128,34 @@ class Employee: Worker {
 }
 
 class Visitor: Guest, Discount {
-    var foodDiscount: Percent
-    var merchDiscount: Percent
+    var foodDiscount: Percent{
+        switch self.type {
+        case .Classic, .Child: return 0
+        case .VIP: return 10
+        }
+    }
+    var merchDiscount: Percent {
+        switch self.type {
+        case .Child, .Classic: return 0
+        case .VIP: return 20
+        }
+    }
     var type: GuestType
     var age: Age?
+    var identifier: String
     
-    
-    
-    init(type: GuestType) {
+    init(type: GuestType, identifier: String) {
         self.type = type
-        
-        switch type {
-        case .Classic, .Child:
-            self.foodDiscount = 0
-            self.merchDiscount = 0
-        case .VIP:
-            self.foodDiscount = 10
-            self.merchDiscount = 20
-        }
-        
+        self.identifier = identifier
     }
-    init(type: GuestType, age: Age) {
-        self.type = type
-        self.age = age
-        
-        switch type {
-        case .Classic, .Child:
-            self.foodDiscount = 0
-            self.merchDiscount = 0
-        case .VIP:
-            self.foodDiscount = 10
-            self.merchDiscount = 20
+    init(age: Age, identifier: String) {
+        if age <= 5 {
+            self.type = .Child
+        } else {
+            self.type = .Classic
         }
+        self.age = age
+        self.identifier = identifier
     }
     
 }
@@ -168,6 +167,7 @@ class Manager: Administrator {
     var city: String
     var state: String
     var zip: String
+    var identifier: String
     
     init(first: String, last: String, adress: String, city: String, state: String, zip: String) {
         self.firstName = first
@@ -176,41 +176,47 @@ class Manager: Administrator {
         self.city = city
         self.state = state
         self.zip = zip
+        self.identifier = firstName
     }
 }
 
 //MARK: Swipe method
 
-
 func swipeV2(for entrant: Entrant) -> [String: Any] {
     
-    var returnDict: [String: Any] = [:]
+    var swipeDict: [String: Any] = [:]
     
     if let employee = entrant as? Employee {
-        print(employee.firstName)
         for x in Area.AllValues {
-            if employee.areaAccess.contains(x) {returnDict.updateValue(true, forKey: x.rawValue)} else {returnDict.updateValue(false, forKey: x.rawValue)}
+            if employee.areaAccess.contains(x) {swipeDict.updateValue(true, forKey: x.rawValue)} else {swipeDict.updateValue(false, forKey: x.rawValue)}
         }
-        returnDict.updateValue(employee.foodDiscount, forKey: "foodDiscount")
-        returnDict.updateValue(employee.merchDiscount, forKey: "merchDiscount")
-        returnDict.updateValue(true, forKey: "ride")
-        returnDict.updateValue(false, forKey: "skip")
-        print(returnDict)
-        return returnDict
+        swipeDict.updateValue(employee.foodDiscount, forKey: "foodDiscount")
+        swipeDict.updateValue(employee.merchDiscount, forKey: "merchDiscount")
+        swipeDict.updateValue(true, forKey: "ride")
+        swipeDict.updateValue(false, forKey: "skip")
+        return swipeDict
     } else if let visitor = entrant as? Visitor {
-        print(visitor.type)
+        for x in Area.AllValues {
+            if visitor.areaAccess.contains(x) {swipeDict.updateValue(true, forKey: x.rawValue)} else {swipeDict.updateValue(false, forKey: x.rawValue)}
+        }
+        swipeDict.updateValue(visitor.foodDiscount, forKey: "foodDiscount")
+        swipeDict.updateValue(visitor.merchDiscount, forKey: "merchDiscount")
+        swipeDict.updateValue(true, forKey: "ride")
+        if visitor.type == .VIP {swipeDict.updateValue(true, forKey: "skip")} else {swipeDict.updateValue(false, forKey: "skip")}
+        return swipeDict
     } else if let manager = entrant as? Manager {
-        print(manager.firstName)
+        for x in Area.AllValues {
+            if manager.areaAccess.contains(x) {swipeDict.updateValue(true, forKey: x.rawValue)} else {swipeDict.updateValue(false, forKey: x.rawValue)}
+        }
+        swipeDict.updateValue(manager.foodDiscount, forKey: "foodDiscount")
+        swipeDict.updateValue(manager.merchDiscount, forKey: "merchDiscount")
+        swipeDict.updateValue(true, forKey: "ride")
+        swipeDict.updateValue(false, forKey: "skip")
+        return swipeDict
     } else {
-        return ["": true]
+        return swipeDict
     }
-    return ["": true]
 }
-
-
-
-
-
 
 func swipe(for entrant: Entrant, swipeType: SwipeType) -> String {
     
