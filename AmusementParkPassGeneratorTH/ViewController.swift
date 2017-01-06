@@ -26,6 +26,7 @@ class ViewController: UIViewController {
         entrants = [visitor, childVisitor, VIP, manager, foodEmployee, rideEmployee, maintenanceEmployee]
         
         //MARK: SwipeCalls
+        
         //Grouped swipes:
 //        groupedSwipe(type: Area.Amusement.rawValue)
 //        groupedSwipe(type: Area.Kitchen.rawValue)
@@ -103,28 +104,28 @@ class ViewController: UIViewController {
 //        swipeForType(entrant: rideEmployee, type: "skip")
         
         //Complete swipes:
-//        swipeV2(for: visitor)
-//        swipeV2(for: childVisitor)
-//        swipeV2(for: VIP)
-//        swipeV2(for: manager)
-//        swipeV2(for: maintenanceEmployee)
-//        swipeV2(for: foodEmployee)
-//        swipeV2(for: rideEmployee)
+//        print(swipe(for: visitor))
+//        print(swipe(for: childVisitor))
+//        print(swipe(for: VIP))
+//        print(swipe(for: manager))
+//        print(swipe(for: maintenanceEmployee))
+//        print(swipe(for: foodEmployee))
+//        print(swipe(for: rideEmployee))
     }
 
     func groupedSwipe(type: String) {
         for entrant in entrants {
-            if let boolSwipeReturn = swipeV2(for: entrant)[type] as? Bool {
+            if let boolSwipeReturn = swipe(for: entrant)[type] as? Bool {
                 print("\(type) gives: \(boolSwipeReturn) for \(entrant.identifier)")
-            } else if let percentSwipeReturn = swipeV2(for: entrant)[type] as? Percent {
+            } else if let percentSwipeReturn = swipe(for: entrant)[type] as? Percent {
                 print("\(type) gives: \(percentSwipeReturn) for \(entrant.identifier)")
             }
         }
     }
     func swipeForType(entrant: Entrant, type: String) {
-        if let boolSwipeReturn = swipeV2(for: entrant)[type] as? Bool {
+        if let boolSwipeReturn = swipe(for: entrant)[type] as? Bool {
             print("\(type) gives: \(boolSwipeReturn) for \(entrant.identifier)")
-        } else if let percentSwipeReturn = swipeV2(for: entrant)[type] as? Percent {
+        } else if let percentSwipeReturn = swipe(for: entrant)[type] as? Percent {
             print("\(type) gives: \(percentSwipeReturn) for \(entrant.identifier)")
         }
     }
