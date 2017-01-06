@@ -20,10 +20,6 @@ enum SwipeType {
     case Area, Ride, Skip, FoodDiscount, MerchDiscount
 }
 
-enum personType {
-    case Employee, Guest, Manager
-}
-
 enum EmployeeType {
     case Food, Ride, Maintenance
 }
@@ -183,25 +179,16 @@ class Manager: Administrator {
 
 //MARK: Swipe methods
 
-func swipe(for entrant: Entrant, swipeType: SwipeType, personType: personType) -> Bool {
-    var person: AnyObject?
-
-
-    switch personType {
-    case .Employee: person = entrant as! Employee
-    case .Guest: person = entrant as! Visitor
-    case .Manager: person = entrant as! Manager
+func swipe(for entrant: Entrant, swipeType: SwipeType) -> Bool {
+    
+    if let employee = entrant as? Employee {
+        print("Employee passed in! First name: \(employee.firstName)")
+    } else if let visitor = entrant as? Visitor {
+        print("Visitor passed in! Type: \(visitor.type)")
+    } else if let manager = entrant as? Manager {
+        print("Manager passed in! First name: \(manager.firstName)")
     }
-
-    if personType == .Employee {
-        print(person.firstName!)
-    } else if personType == .Guest {
-        print(person.type!)
-    } else if personType == .Manager {
-        print(person.firstName!)
-    } else {
-        return false
-    }
+    
     
     return false
 }
