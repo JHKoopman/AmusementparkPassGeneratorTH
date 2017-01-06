@@ -12,12 +12,14 @@ typealias Percent = Int
 typealias Age = Int
 
 //MARK: Enums 
-enum Area {
-    case Amusement, Kitchen, RideControl, Maintenance, Office
+enum Area: String {
+    case Amusement = "Amusement", Kitchen = "Kitchen", RideControl = "RideControl", Maintenance = "Maintenance", Office = "Office"
+    
+    static let AllValues = [Amusement, Kitchen, RideControl, Maintenance, Office]
 }
 
 enum SwipeType {
-    case Area, Ride, Skip, FoodDiscount, MerchDiscount
+    case AmusementArea, ControlArea, KitchenArea, Office, MaintenanceArea, Ride, Skip, FoodDiscount, MerchDiscount
 }
 
 enum EmployeeType {
@@ -177,20 +179,83 @@ class Manager: Administrator {
     }
 }
 
-//MARK: Swipe methods
+//MARK: Swipe method
 
-func swipe(for entrant: Entrant, swipeType: SwipeType) -> Bool {
+
+func swipeV2(for entrant: Entrant) -> [String: Any] {
+    
+    var returnDict: [String: Any] = [:]
+    
+    if let employee = entrant as? Employee {
+        print(employee.firstName)
+        for x in Area.AllValues {
+            if employee.areaAccess.contains(x) {returnDict.updateValue(true, forKey: x.rawValue)} else {returnDict.updateValue(false, forKey: x.rawValue)}
+        }
+        returnDict.updateValue(employee.foodDiscount, forKey: "foodDiscount")
+        returnDict.updateValue(employee.merchDiscount, forKey: "merchDiscount")
+        returnDict.updateValue(true, forKey: "ride")
+        returnDict.updateValue(false, forKey: "skip")
+        print(returnDict)
+        return returnDict
+    } else if let visitor = entrant as? Visitor {
+        print(visitor.type)
+    } else if let manager = entrant as? Manager {
+        print(manager.firstName)
+    } else {
+        return ["": true]
+    }
+    return ["": true]
+}
+
+
+
+
+
+
+func swipe(for entrant: Entrant, swipeType: SwipeType) -> String {
     
     if let employee = entrant as? Employee {
         print("Employee passed in! First name: \(employee.firstName)")
+        switch swipeType {
+        case .AmusementArea: if employee.areaAccess.contains(.Amusement) {return "true"} else {return "false"}
+        case .ControlArea: if employee.areaAccess.contains(.RideControl) {return "true"} else {return "false"}
+        case .KitchenArea: if employee.areaAccess.contains(.Kitchen) {return "true"} else {return "false"}
+        case .MaintenanceArea: if employee.areaAccess.contains(.Maintenance) {return "true"} else {return "false"}
+        case .Office: if employee.areaAccess.contains(.Office) {return "true"} else {return "false"}
+        case .FoodDiscount: return "\(employee.foodDiscount)"
+        case .MerchDiscount: return "\(employee.merchDiscount)"
+        case .Ride: return "true"
+        case .Skip: return "false"
+        }
     } else if let visitor = entrant as? Visitor {
         print("Visitor passed in! Type: \(visitor.type)")
+        switch swipeType {
+        case .AmusementArea: if visitor.areaAccess.contains(.Amusement) {return "true"} else {return "false"}
+        case .ControlArea: if visitor.areaAccess.contains(.RideControl) {return "true"} else {return "false"}
+        case .KitchenArea: if visitor.areaAccess.contains(.Kitchen) {return "true"} else {return "false"}
+        case .MaintenanceArea: if visitor.areaAccess.contains(.Maintenance) {return "true"} else {return "false"}
+        case .Office: if visitor.areaAccess.contains(.Office) {return "true"} else {return "false"}
+        case .FoodDiscount: return "\(visitor.foodDiscount)"
+        case .MerchDiscount: return "\(visitor.merchDiscount)"
+        case .Ride: return "true"
+        case .Skip: if visitor.type == .VIP {return "true"} else {return "false"}
+        }
     } else if let manager = entrant as? Manager {
         print("Manager passed in! First name: \(manager.firstName)")
+        switch swipeType {
+        case .AmusementArea: if manager.areaAccess.contains(.Amusement) {return "true"} else {return "false"}
+        case .ControlArea: if manager.areaAccess.contains(.RideControl) {return "true"} else {return "false"}
+        case .KitchenArea: if manager.areaAccess.contains(.Kitchen) {return "true"} else {return "false"}
+        case .MaintenanceArea: if manager.areaAccess.contains(.Maintenance) {return "true"} else {return "false"}
+        case .Office: if manager.areaAccess.contains(.Office) {return "true"} else {return "false"}
+        case .FoodDiscount: return "\(manager.foodDiscount)"
+        case .MerchDiscount: return "\(manager.merchDiscount)"
+        case .Ride: return "true"
+        case .Skip: return "false"
+        }
+    } else {
+        return "false"
     }
-    
-    
-    return false
 }
 
 
