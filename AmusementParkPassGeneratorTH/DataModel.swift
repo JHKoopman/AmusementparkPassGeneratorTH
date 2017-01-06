@@ -114,7 +114,7 @@ class Employee: Worker {
         self.city = city
         self.state = state
         self.zip = zip
-        self.identifier = first
+        self.identifier = "Employee \(first)"
         
         switch type {
         case .Food:
@@ -176,7 +176,7 @@ class Manager: Administrator {
         self.city = city
         self.state = state
         self.zip = zip
-        self.identifier = firstName
+        self.identifier = "Manager \(first)"
     }
 }
 
