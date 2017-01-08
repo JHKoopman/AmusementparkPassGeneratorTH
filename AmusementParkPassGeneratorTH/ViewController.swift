@@ -21,9 +21,22 @@ class ViewController: UIViewController {
         let manager = Manager(first: "Jack", last: "Black", adress: "Somestreet 12", city: "New-York City", state: "New York", zip: "10024")
         let maintenanceEmployee = Employee(first: "David", last: "Bentham", adress: "Somestreet 17", city: "New-York City", state: "New York", zip: "10024", type: .Maintenance)
         let foodEmployee = Employee(first: "Christopher", last: "Columbus", adress: "Anotherstreet 104", city: "New-York City", state: "New York", zip: "10025", type: .Food)
-        let rideEmployee = Employee(first: "John", last: "Cena", adress: "Athirdstreet 902", city: "New-York City", state: "New York", zip: "10020", type: .Ride)
+        let rideEmployee = Employee(first: "John", last: "Cena", adress: "AThirdstreet 902", city: "New-York City", state: "New York", zip: "10020", type: .Ride)
         
         entrants = [visitor, childVisitor, VIP, manager, foodEmployee, rideEmployee, maintenanceEmployee]
+        
+        //MARK: Failing plug values
+        //There are 6 failing Manager plugs and 3 Employee plugs
+        
+//        let managerFail1 = Manager(first: "", last: "Black", adress: "Somestreet 12", city: "New-York City", state: "New York", zip: "10024")
+//        let managerFail2 = Manager(first: "Jack", last: "", adress: "Somestreet 12", city: "New-York City", state: "New York", zip: "10024")
+//        let managerFail3 = Manager(first: "Jack", last: "Black", adress: "", city: "New-York City", state: "New York", zip: "10024")
+//        let managerFail4 = Manager(first: "Jack", last: "Black", adress: "Somestreet 12", city: "", state: "New York", zip: "10024")
+//        let managerFail5 = Manager(first: "Jack", last: "Black", adress: "Somestreet 12", city: "New-York City", state: "", zip: "10024")
+//        let managerFail6 = Manager(first: "Jack", last: "Black", adress: "Somestreet 12", city: "New-York City", state: "New York", zip: "")
+//        let employeeFail1 = Employee(first: "", last: "Bentham", adress: "Somestreet 17", city: "New-York City", state: "New York", zip: "10024", type: .Maintenance)
+//        let employeeFail2 = Employee(first: "Christopher", last: "", adress: "Anotherstreet 104", city: "New-York City", state: "New York", zip: "10025", type: .Food)
+//        let employeeFail3 = Employee(first: "John", last: "Cena", adress: "AThirdstreet 902", city: "", state: "New York", zip: "10020", type: .Ride)
         
         //MARK: SwipeCalls
         

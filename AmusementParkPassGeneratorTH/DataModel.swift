@@ -98,14 +98,14 @@ extension Guest {
 //MARK: Classes
 
 class Employee: Worker {
-    var firstName: String
-    var lastName: String
-    var adress: String
-    var city: String
-    var state: String
-    var zip: String
-    var areaAccess: [Area]
-    var identifier: String
+    let firstName: String
+    let lastName: String
+    let adress: String
+    let city: String
+    let state: String
+    let zip: String
+    let areaAccess: [Area]
+    let identifier: String
     
     init(first: String, last: String, adress: String, city: String, state: String, zip: String, type: EmployeeType) {
         self.firstName = first
@@ -180,13 +180,14 @@ class Visitor: Guest, Discount {
         case .VIP: return 20
         }
     }
-    var type: GuestType
-    var age: Age?
-    var identifier: String
+    let type: GuestType
+    let age: Age?
+    let identifier: String
     
     init(type: GuestType, identifier: String) { /*Init for classic or VIP guests, no extra information needed*/
         self.type = type
         self.identifier = identifier
+        self.age = nil
     }
     init(age: Age, identifier: String) { /*Init for Child guests, if a age above 5 is passed in the pass will be converted into a Classic pass*/
         if age <= 5 {
@@ -202,13 +203,13 @@ class Visitor: Guest, Discount {
 }
 
 class Manager: Administrator {
-    var firstName: String
-    var lastName: String
-    var adress: String
-    var city: String
-    var state: String
-    var zip: String
-    var identifier: String
+    let firstName: String
+    let lastName: String
+    let adress: String
+    let city: String
+    let state: String
+    let zip: String
+    let identifier: String
     
     init(first: String, last: String, adress: String, city: String, state: String, zip: String) {
         self.firstName = first
