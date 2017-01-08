@@ -19,7 +19,7 @@ enum Area: String {
 }
 
 enum ErrorType: Error {
-    case NoSuficientData
+    case MissingFirstName, MissingLastName, MissingAdress, MissingState, MissingCity, MissingZIP
 }
 
 enum EmployeeType {
@@ -34,7 +34,7 @@ enum GuestType {
 
 protocol Entrant {
     var areaAccess: [Area] { get }
-    var identifier: String { get }
+    var identifier: String { get } /*Identifier is just something to make things more clear while we have no UI. Will be deleted once there is UI*/
 }
 
 protocol Guest: Entrant {
@@ -50,7 +50,7 @@ protocol Administrator: Entrant, Discount {
     var zip: String { get }
 }
 
-protocol Worker: Entrant, Discount {
+protocol Worker: Entrant, Discount { /*Used worker as protocol name here because I wanted Employee as Class name*/
     var firstName: String { get }
     var lastName: String { get }
     var adress: String { get }
@@ -65,7 +65,7 @@ protocol Discount {
 }
 
 //MARK: Extensions
-
+//Adding default values
 extension Worker {
     var foodDiscount: Percent {
         return 15
@@ -116,7 +116,7 @@ class Employee: Worker {
         self.zip = zip
         self.identifier = "Employee \(first)"
         
-        switch type {
+        switch type { /*Adding area access based on the EmployeeType*/
         case .Food:
             self.areaAccess = [Area.Amusement, Area.Kitchen]
         case .Maintenance:
@@ -124,17 +124,59 @@ class Employee: Worker {
         case .Ride:
             self.areaAccess = [Area.Amusement, Area.RideControl]
         }
+        do {
+            try validateData(pass: Employee(first: first, last: last, adress: adress, city: city, state: state, zip: zip, type: type))
+        } catch ErrorType.MissingFirstName {
+            print("First name is missing! Please fill in a first name and try again!")
+        } catch ErrorType.MissingLastName {
+            print("Last name is missing! Please fill in a last name and try again!")
+        } catch ErrorType.MissingAdress {
+            print("Adress is missing! Please fill in an adress and try again!")
+        } catch ErrorType.MissingCity {
+            print("City is missing! Please fill in a city and try again!")
+        } catch ErrorType.MissingState {
+            print("State is missing! Please fill in a state and try again!")
+        } catch ErrorType.MissingZIP {
+            print("ZIP is missing! Please fill in a ZIP and try again!")
+        } catch {
+            fatalError("Something went wrong!")
+        }
+        
+        
     }
+    
+    func validateData(pass: Employee) throws {
+        guard pass.firstName != "" else {
+            throw ErrorType.MissingFirstName
+        }
+        guard pass.lastName != "" else {
+            throw ErrorType.MissingLastName
+        }
+        guard pass.adress != "" else {
+            throw ErrorType.MissingAdress
+        }
+        guard pass.city != "" else {
+            throw ErrorType.MissingCity
+        }
+        guard pass.state != "" else {
+            throw ErrorType.MissingState
+        }
+        guard pass.zip != "" else {
+            throw ErrorType.MissingZIP
+        }
+    }
+    
+    
 }
 
 class Visitor: Guest, Discount {
-    var foodDiscount: Percent{
+    var foodDiscount: Percent{ /*Calculate discount based on GuestType*/
         switch self.type {
         case .Classic, .Child: return 0
         case .VIP: return 10
         }
     }
-    var merchDiscount: Percent {
+    var merchDiscount: Percent { /*Calculate discount based on GuestType*/
         switch self.type {
         case .Child, .Classic: return 0
         case .VIP: return 20
@@ -144,15 +186,16 @@ class Visitor: Guest, Discount {
     var age: Age?
     var identifier: String
     
-    init(type: GuestType, identifier: String) {
+    init(type: GuestType, identifier: String) { /*Init for classic or VIP guests, no extra information needed*/
         self.type = type
         self.identifier = identifier
     }
-    init(age: Age, identifier: String) {
+    init(age: Age, identifier: String) { /*Init for Child guests, if a age above 5 is passed in the pass will be converted into a Classic pass*/
         if age <= 5 {
             self.type = .Child
         } else {
             self.type = .Classic
+            print("The age too high to get a Child pass! The pass is converted into a Classic pass!")
         }
         self.age = age
         self.identifier = identifier
@@ -177,7 +220,49 @@ class Manager: Administrator {
         self.state = state
         self.zip = zip
         self.identifier = "Manager \(first)"
+        
+        do {
+            try validateData(pass: Manager(first: first, last: last, adress: adress, city: city, state: state, zip: zip))
+        } catch ErrorType.MissingFirstName {
+            print("First name is missing! Please fill in a first name and try again!")
+        } catch ErrorType.MissingLastName {
+            print("Last name is missing! Please fill in a last name and try again!")
+        } catch ErrorType.MissingAdress {
+            print("Adress is missing! Please fill in an adress and try again!")
+        } catch ErrorType.MissingCity {
+            print("City is missing! Please fill in a city and try again!")
+        } catch ErrorType.MissingState {
+            print("State is missing! Please fill in a state and try again!")
+        } catch ErrorType.MissingZIP {
+            print("ZIP is missing! Please fill in a ZIP and try again!")
+        } catch {
+            fatalError("Something went wrong!")
+        }
+
+        
     }
+    
+    func validateData(pass: Manager) throws {
+        guard pass.firstName != "" else {
+            throw ErrorType.MissingFirstName
+        }
+        guard pass.lastName != "" else {
+            throw ErrorType.MissingLastName
+        }
+        guard pass.adress != "" else {
+            throw ErrorType.MissingAdress
+        }
+        guard pass.city != "" else {
+            throw ErrorType.MissingCity
+        }
+        guard pass.state != "" else {
+            throw ErrorType.MissingState
+        }
+        guard pass.zip != "" else {
+            throw ErrorType.MissingZIP
+        }
+    }
+
 }
 
 //MARK: Swipe method
