@@ -124,7 +124,47 @@ class Employee: Worker {
         case .Ride:
             self.areaAccess = [Area.Amusement, Area.RideControl]
         }
+        
+        do {
+            try validateData(pass: Employee(first: first, last: last, adress: adress, city: city, state: state, zip: zip, type: type))
+        } catch ErrorType.MissingFirstName {
+            print("First name is missing! Please fill in a first name and try again!")
+        } catch ErrorType.MissingLastName {
+            print("Last name is missing! Please fill in a last name and try again!")
+        } catch ErrorType.MissingAdress {
+            print("Adress is missing! Please fill in an adress and try again!")
+        } catch ErrorType.MissingCity {
+            print("City is missing! Please fill in a city and try again!")
+        } catch ErrorType.MissingState {
+            print("State is missing! Please fill in a state and try again!")
+        } catch ErrorType.MissingZIP {
+            print("ZIP is missing! Please fill in a ZIP and try again!")
+        } catch {
+            fatalError("Something went wrong!")
+        }
     }
+    
+    func validateData(pass: Employee) throws {
+        guard pass.firstName != "" else {
+            throw ErrorType.MissingFirstName
+        }
+        guard pass.lastName != "" else {
+            throw ErrorType.MissingLastName
+        }
+        guard pass.adress != "" else {
+            throw ErrorType.MissingAdress
+        }
+        guard pass.city != "" else {
+            throw ErrorType.MissingCity
+        }
+        guard pass.state != "" else {
+            throw ErrorType.MissingState
+        }
+        guard pass.zip != "" else {
+            throw ErrorType.MissingZIP
+        }
+    }
+
 }
 
 class Visitor: Guest, Discount {
@@ -179,6 +219,45 @@ class Manager: Administrator {
         self.zip = zip
         self.identifier = "Manager \(first)"
         
+        do {
+            try validateData(pass: Manager(first: first, last: last, adress: adress, city: city, state: state, zip: zip))
+        } catch ErrorType.MissingFirstName {
+            print("First name is missing! Please fill in a first name and try again!")
+        } catch ErrorType.MissingLastName {
+            print("Last name is missing! Please fill in a last name and try again!")
+        } catch ErrorType.MissingAdress {
+            print("Adress is missing! Please fill in an adress and try again!")
+        } catch ErrorType.MissingCity {
+            print("City is missing! Please fill in a city and try again!")
+        } catch ErrorType.MissingState {
+            print("State is missing! Please fill in a state and try again!")
+        } catch ErrorType.MissingZIP {
+            print("ZIP is missing! Please fill in a ZIP and try again!")
+        } catch {
+            fatalError("Something went wrong!")
+        }
+        
+    }
+    
+    func validateData(pass: Manager) throws {
+        guard pass.firstName != "" else {
+            throw ErrorType.MissingFirstName
+        }
+        guard pass.lastName != "" else {
+            throw ErrorType.MissingLastName
+        }
+        guard pass.adress != "" else {
+            throw ErrorType.MissingAdress
+        }
+        guard pass.city != "" else {
+            throw ErrorType.MissingCity
+        }
+        guard pass.state != "" else {
+            throw ErrorType.MissingState
+        }
+        guard pass.zip != "" else {
+            throw ErrorType.MissingZIP
+        }
     }
 }
 
