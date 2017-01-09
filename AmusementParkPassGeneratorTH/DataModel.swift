@@ -125,7 +125,7 @@ class Employee: Worker {
             self.areaAccess = [Area.Amusement, Area.RideControl]
         }
         
-        do {
+        do { /*Checking if all data is entered, otherwise throwing an Error*/
             try validateData(first: first, last: last, adress: adress, city: city, state: state, zip: zip)
         } catch ErrorType.MissingFirstName {
             print("First name is missing! Please fill in a first name and try again!")
@@ -221,7 +221,7 @@ class Manager: Administrator {
         self.zip = zip
         self.identifier = "Manager \(first)"
         
-        do {
+        do { /*Checking if all data is entered, otherwise throwing an Error*/
             try validateData(first: first, last: last, adress: adress, city: city, state: state, zip: zip)
         } catch ErrorType.MissingFirstName {
             print("First name is missing! Please fill in a first name and try again!")
@@ -267,8 +267,9 @@ class Manager: Administrator {
 func swipe(for entrant: Entrant) -> [String: Any] {
     
     var swipeDict: [String: Any] = [:]
-    
+    //First figure out what kind of Entrant we have
     if let employee = entrant as? Employee {
+        //Than make a dictionary with all possible swipes and return that
         for x in Area.AllValues {
             if employee.areaAccess.contains(x) {swipeDict.updateValue(true, forKey: x.rawValue)} else {swipeDict.updateValue(false, forKey: x.rawValue)}
         }
