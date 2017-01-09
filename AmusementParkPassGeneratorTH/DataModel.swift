@@ -126,7 +126,7 @@ class Employee: Worker {
         }
         
         do {
-            try validateData(pass: Employee(first: first, last: last, adress: adress, city: city, state: state, zip: zip, type: type))
+            try validateData(first: first, last: last, adress: adress, city: city, state: state, zip: zip)
         } catch ErrorType.MissingFirstName {
             print("First name is missing! Please fill in a first name and try again!")
         } catch ErrorType.MissingLastName {
@@ -144,23 +144,23 @@ class Employee: Worker {
         }
     }
     
-    func validateData(pass: Employee) throws {
-        guard pass.firstName != "" else {
+    func validateData(first: String, last: String, adress: String, city: String, state: String, zip: String) throws {
+        guard first != "" else {
             throw ErrorType.MissingFirstName
         }
-        guard pass.lastName != "" else {
+        guard last != "" else {
             throw ErrorType.MissingLastName
         }
-        guard pass.adress != "" else {
+        guard adress != "" else {
             throw ErrorType.MissingAdress
         }
-        guard pass.city != "" else {
+        guard city != "" else {
             throw ErrorType.MissingCity
         }
-        guard pass.state != "" else {
+        guard state != "" else {
             throw ErrorType.MissingState
         }
-        guard pass.zip != "" else {
+        guard zip != "" else {
             throw ErrorType.MissingZIP
         }
     }
@@ -202,6 +202,7 @@ class Visitor: Guest, Discount {
     
 }
 
+
 class Manager: Administrator {
     let firstName: String
     let lastName: String
@@ -221,7 +222,7 @@ class Manager: Administrator {
         self.identifier = "Manager \(first)"
         
         do {
-            try validateData(pass: Manager(first: first, last: last, adress: adress, city: city, state: state, zip: zip))
+            try validateData(first: first, last: last, adress: adress, city: city, state: state, zip: zip)
         } catch ErrorType.MissingFirstName {
             print("First name is missing! Please fill in a first name and try again!")
         } catch ErrorType.MissingLastName {
@@ -237,26 +238,25 @@ class Manager: Administrator {
         } catch {
             fatalError("Something went wrong!")
         }
-        
     }
     
-    func validateData(pass: Manager) throws {
-        guard pass.firstName != "" else {
+    func validateData(first: String, last: String, adress: String, city: String, state: String, zip: String) throws {
+        guard first != "" else {
             throw ErrorType.MissingFirstName
         }
-        guard pass.lastName != "" else {
+        guard last != "" else {
             throw ErrorType.MissingLastName
         }
-        guard pass.adress != "" else {
+        guard adress != "" else {
             throw ErrorType.MissingAdress
         }
-        guard pass.city != "" else {
+        guard city != "" else {
             throw ErrorType.MissingCity
         }
-        guard pass.state != "" else {
+        guard state != "" else {
             throw ErrorType.MissingState
         }
-        guard pass.zip != "" else {
+        guard zip != "" else {
             throw ErrorType.MissingZIP
         }
     }
