@@ -370,7 +370,7 @@
         <!--Date Picker View Controller-->
         <scene sceneID="uQE-Bw-Z7m">
             <objects>
-                <viewController id="tAY-EP-YES" customClass="DatePickerViewController" customModule="AmusementParkPassGeneratorTH" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="overCurrentContext" id="tAY-EP-YES" customClass="DatePickerViewController" customModule="AmusementParkPassGeneratorTH" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kAW-fd-AeC"/>
                         <viewControllerLayoutGuide type="bottom" id="XvW-I8-feX"/>

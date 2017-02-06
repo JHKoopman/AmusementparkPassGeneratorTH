@@ -23,13 +23,23 @@ class ViewController: UIViewController {
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var enterDateButton: UIButton!
         
+    static let sharedInstance = ViewController()
+    var dateOfBirt: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if dateOfBirt != "" {
+            dateOfBirthTextField.text = dateOfBirt
+        }
         enterDateButton.addTarget(self, action: #selector(selectDateOfBirth), for: .touchUpInside)
     }
     
     @IBAction func GeneratePassPressed(_ sender: UIButton) {
         createAlert()
+    }
+    
+    func setDateOfBirth() {
+        dateOfBirthTextField.text = dateOfBirt
     }
     
     func selectDateOfBirth() {
