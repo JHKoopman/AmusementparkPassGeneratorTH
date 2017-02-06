@@ -6,6 +6,8 @@
 //  Copyright © 2016 JarICT. All rights reserved.
 //
 
+import UIKit
+
 //MARK: Typealiases
 
 typealias Percent = Int
