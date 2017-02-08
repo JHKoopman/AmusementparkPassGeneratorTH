@@ -16,7 +16,9 @@
 		0864FD7B1E2FE6CB0060AE83 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864FD7A1E2FE6CB0060AE83 /* Employee.swift */; };
 		0864FD7F1E2FE71E0060AE83 /* Visitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864FD7E1E2FE71E0060AE83 /* Visitor.swift */; };
 		0864FD811E2FE7390060AE83 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0864FD801E2FE7390060AE83 /* Manager.swift */; };
-		088B24D01E48ED8C002B09A6 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088B24CF1E48ED8C002B09A6 /* DatePickerViewController.swift */; };
+		0886F9B31E4A3A5600E01641 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0886F9B21E4A3A5600E01641 /* DatePicker.swift */; };
+		0886F9B51E4A3B9600E01641 /* PopDateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0886F9B41E4A3B9600E01641 /* PopDateViewController.xib */; };
+		0886F9B71E4A3D3400E01641 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0886F9B61E4A3D3400E01641 /* DateViewController.swift */; };
 		088EF6911E48DBCB00D921FB /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088EF6901E48DBCB00D921FB /* TextField.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,7 +34,9 @@
 		0864FD7A1E2FE6CB0060AE83 /* Employee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
 		0864FD7E1E2FE71E0060AE83 /* Visitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Visitor.swift; sourceTree = "<group>"; };
 		0864FD801E2FE7390060AE83 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
-		088B24CF1E48ED8C002B09A6 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		0886F9B21E4A3A5600E01641 /* DatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
+		0886F9B41E4A3B9600E01641 /* PopDateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopDateViewController.xib; sourceTree = "<group>"; };
+		0886F9B61E4A3D3400E01641 /* DateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 		088EF6901E48DBCB00D921FB /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,10 +70,10 @@
 		08050B691DFC045100BF0D44 /* AmusementParkPassGeneratorTH */ = {
 			isa = PBXGroup;
 			children = (
+				0886F9B11E4A3A1700E01641 /* DatePicker */,
 				08050B6A1DFC045200BF0D44 /* AppDelegate.swift */,
 				08050B6C1DFC045200BF0D44 /* ViewController.swift */,
 				08050B6E1DFC045200BF0D44 /* Main.storyboard */,
-				088B24CF1E48ED8C002B09A6 /* DatePickerViewController.swift */,
 				08050B711DFC045200BF0D44 /* Assets.xcassets */,
 				08050B731DFC045200BF0D44 /* LaunchScreen.storyboard */,
 				08050B761DFC045200BF0D44 /* Info.plist */,
@@ -80,6 +84,16 @@
 				088EF6901E48DBCB00D921FB /* TextField.swift */,
 			);
 			path = AmusementParkPassGeneratorTH;
+			sourceTree = "<group>";
+		};
+		0886F9B11E4A3A1700E01641 /* DatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				0886F9B21E4A3A5600E01641 /* DatePicker.swift */,
+				0886F9B61E4A3D3400E01641 /* DateViewController.swift */,
+				0886F9B41E4A3B9600E01641 /* PopDateViewController.xib */,
+			);
+			name = DatePicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,6 +158,7 @@
 			files = (
 				08050B751DFC045200BF0D44 /* LaunchScreen.storyboard in Resources */,
 				08050B721DFC045200BF0D44 /* Assets.xcassets in Resources */,
+				0886F9B51E4A3B9600E01641 /* PopDateViewController.xib in Resources */,
 				08050B701DFC045200BF0D44 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -155,14 +170,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0886F9B71E4A3D3400E01641 /* DateViewController.swift in Sources */,
 				08050B6D1DFC045200BF0D44 /* ViewController.swift in Sources */,
 				0864FD811E2FE7390060AE83 /* Manager.swift in Sources */,
 				0864FD7B1E2FE6CB0060AE83 /* Employee.swift in Sources */,
 				088EF6911E48DBCB00D921FB /* TextField.swift in Sources */,
-				088B24D01E48ED8C002B09A6 /* DatePickerViewController.swift in Sources */,
 				08050B6B1DFC045200BF0D44 /* AppDelegate.swift in Sources */,
 				0864FD7F1E2FE71E0060AE83 /* Visitor.swift in Sources */,
 				08050B7D1DFC04D500BF0D44 /* DataModel.swift in Sources */,
+				0886F9B31E4A3A5600E01641 /* DatePicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

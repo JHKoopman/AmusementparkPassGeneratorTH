@@ -11,13 +11,14 @@ class Visitor: Guest, Discount {
     var foodDiscount: Percent{ /*Calculate discount based on GuestType*/
         switch self.type {
         case .Classic, .Child: return 0
-        case .VIP: return 10
+        case .VIP, .SeasonPass, .Senior: return 10
         }
     }
     var merchDiscount: Percent { /*Calculate discount based on GuestType*/
         switch self.type {
         case .Child, .Classic: return 0
-        case .VIP: return 20
+        case .Senior: return 10
+        case .VIP, .SeasonPass: return 20
         }
     }
     let type: GuestType
@@ -39,5 +40,4 @@ class Visitor: Guest, Discount {
         self.age = age
         self.identifier = identifier
     }
-    
 }

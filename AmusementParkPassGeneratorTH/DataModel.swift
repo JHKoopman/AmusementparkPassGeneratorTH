@@ -29,7 +29,7 @@ enum EmployeeType {
 }
 
 enum GuestType {
-    case Classic, Child, VIP
+    case Classic, Child, VIP, Senior, SeasonPass
 }
 
 //MARK: Protocols
@@ -95,6 +95,19 @@ extension Guest {
         return [Area.Amusement]
     }
 }
+
+extension Date {
+    
+    // -> Date System Formatted Medium
+    func ToDateMediumString() -> NSString? {
+        
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        return formatter.string(from: self) as NSString?
+    }
+}
+
 
 //MARK: Swipe method
 
