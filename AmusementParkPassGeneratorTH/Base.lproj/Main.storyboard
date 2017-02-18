@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="MM / DD / YYYY" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mlq-iZ-DdG" userLabel="Date of Birth Text Field" customClass="TextField" customModule="AmusementParkPassGeneratorTH" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mlq-iZ-DdG" userLabel="Date of Birth Text Field" customClass="TextField" customModule="AmusementParkPassGeneratorTH" customModuleProvider="target">
                                 <rect key="frame" x="60" y="240" width="194" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="0.56999999999999995" colorSpace="calibratedRGB"/>
@@ -191,44 +191,68 @@
                                         <color key="backgroundColor" red="0.49803921568627452" green="0.38431372549019605" blue="0.62745098039215685" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="23"/>
                                         <state key="normal" title="Guest">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="disabled" title="Guest">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <state key="selected">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="catButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RKT-o0-1MO"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RbE-vK-ZII">
                                         <rect key="frame" x="192" y="0.0" width="192" height="80"/>
                                         <color key="backgroundColor" red="0.49803921568627452" green="0.38431372549019605" blue="0.62745098039215685" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="23"/>
                                         <state key="normal" title="Employee">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="disabled" title="Employee">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <state key="selected">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="catButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gWX-hI-h4c"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGd-3T-zgC">
                                         <rect key="frame" x="384" y="0.0" width="192" height="80"/>
                                         <color key="backgroundColor" red="0.49803921568627452" green="0.38431372549019605" blue="0.62745098039215685" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="23"/>
                                         <state key="normal" title="Manager">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="disabled" title="Manager">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <state key="selected">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="catButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fi8-fi-WfN"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Sn-mj-gzC">
                                         <rect key="frame" x="576" y="0.0" width="192" height="80"/>
                                         <color key="backgroundColor" red="0.49803921568627452" green="0.38431372549019605" blue="0.62745098039215685" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="23"/>
                                         <state key="normal" title="Vendor">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="disabled" title="Vendor">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <state key="selected">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="catButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Vx-ln-4cz"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.49803921568627452" green="0.38431372549019605" blue="0.62745098039215685" alpha="1" colorSpace="calibratedRGB"/>
@@ -348,9 +372,12 @@
                         <outlet property="cityTextField" destination="oqG-2Y-6hm" id="TV1-J5-fhO"/>
                         <outlet property="companyTextField" destination="Znv-oG-KEN" id="ETJ-OQ-AbC"/>
                         <outlet property="dateOfBirthTextField" destination="Mlq-iZ-DdG" id="HF3-PU-8EP"/>
+                        <outlet property="employeeButton" destination="RbE-vK-ZII" id="E9B-cU-WXu"/>
                         <outlet property="entrantStackView" destination="hvx-DP-BP5" id="jfh-Kc-mKD"/>
                         <outlet property="firstNameTextField" destination="ch9-2F-j7x" id="BFw-Sq-uok"/>
+                        <outlet property="guestButton" destination="pvh-sW-ATP" id="E6A-xl-NTP"/>
                         <outlet property="lastNameTextField" destination="jWT-6A-piU" id="C0X-3d-WLo"/>
+                        <outlet property="managerButton" destination="PGd-3T-zgC" id="8FO-bU-JcL"/>
                         <outlet property="projectTextField" destination="wVc-JJ-hcd" id="TvR-Af-0dc"/>
                         <outlet property="ssnTextField" destination="IE7-06-QkW" id="O0m-W3-ZKD"/>
                         <outlet property="stackButton1" destination="m35-s0-dcH" id="0UP-z1-uP1"/>
@@ -360,6 +387,7 @@
                         <outlet property="stackButton5" destination="QSo-nY-pS0" id="UAn-80-4Qs"/>
                         <outlet property="stateTextField" destination="cxk-DD-GID" id="0wX-sD-czg"/>
                         <outlet property="streetTextField" destination="taU-ie-KK8" id="ieT-kK-cZH"/>
+                        <outlet property="vendorButton" destination="4Sn-mj-gzC" id="PZq-Xc-DMr"/>
                         <outlet property="zipTextField" destination="lhk-J3-cvA" id="Yjz-LI-iBL"/>
                     </connections>
                 </viewController>

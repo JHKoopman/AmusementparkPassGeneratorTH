@@ -70,20 +70,36 @@
 		08050B691DFC045100BF0D44 /* AmusementParkPassGeneratorTH */ = {
 			isa = PBXGroup;
 			children = (
-				0886F9B11E4A3A1700E01641 /* DatePicker */,
-				08050B6A1DFC045200BF0D44 /* AppDelegate.swift */,
 				08050B6C1DFC045200BF0D44 /* ViewController.swift */,
 				08050B6E1DFC045200BF0D44 /* Main.storyboard */,
-				08050B711DFC045200BF0D44 /* Assets.xcassets */,
-				08050B731DFC045200BF0D44 /* LaunchScreen.storyboard */,
-				08050B761DFC045200BF0D44 /* Info.plist */,
+				080C8C181E4B437A00C0B03E /* Classes */,
+				080C8C171E4B436100C0B03E /* Supporting files */,
+				0886F9B11E4A3A1700E01641 /* DatePicker */,
+			);
+			path = AmusementParkPassGeneratorTH;
+			sourceTree = "<group>";
+		};
+		080C8C171E4B436100C0B03E /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
 				08050B7C1DFC04D500BF0D44 /* DataModel.swift */,
+				08050B711DFC045200BF0D44 /* Assets.xcassets */,
+				08050B761DFC045200BF0D44 /* Info.plist */,
+				08050B731DFC045200BF0D44 /* LaunchScreen.storyboard */,
+				08050B6A1DFC045200BF0D44 /* AppDelegate.swift */,
+			);
+			name = "Supporting files";
+			sourceTree = "<group>";
+		};
+		080C8C181E4B437A00C0B03E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
 				0864FD7A1E2FE6CB0060AE83 /* Employee.swift */,
 				0864FD7E1E2FE71E0060AE83 /* Visitor.swift */,
 				0864FD801E2FE7390060AE83 /* Manager.swift */,
 				088EF6901E48DBCB00D921FB /* TextField.swift */,
 			);
-			path = AmusementParkPassGeneratorTH;
+			name = Classes;
 			sourceTree = "<group>";
 		};
 		0886F9B11E4A3A1700E01641 /* DatePicker */ = {

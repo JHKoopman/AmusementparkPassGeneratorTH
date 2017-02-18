@@ -36,7 +36,6 @@ enum GuestType {
 
 protocol Entrant {
     var areaAccess: [Area] { get }
-    var identifier: String { get } /*Identifier is just something to make things more clear while we have no UI. Will be deleted once there is UI*/
 }
 
 protocol Guest: Entrant {

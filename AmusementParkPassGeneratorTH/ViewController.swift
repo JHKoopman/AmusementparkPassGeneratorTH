@@ -31,12 +31,36 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var stackButton3: UIButton!
     @IBOutlet weak var stackButton4: UIButton!
     @IBOutlet weak var stackButton5: UIButton!
+    @IBOutlet weak var guestButton: UIButton!
+    @IBOutlet weak var employeeButton: UIButton!
+    @IBOutlet weak var managerButton: UIButton!
+    @IBOutlet weak var vendorButton: UIButton!
+    
+    var classicGuest: [String:[UITextField]]!
+    var VIPGuest: [String:[UITextField]]!
+    var childGuest: [String:[UITextField]]!
+    var employee: [String:[UITextField]]!
+    var manager: [String:[UITextField]]!
+    var seasonPassGuest: [String:[UITextField]]!
+    var seniorGuest: [String:[UITextField]]!
+    var vendor: [String:[UITextField]]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        classicGuest = ["Needed":[], "NotNeeded":[]]
+        VIPGuest = ["Needed":[], "NotNeeded":[]]
+        childGuest = ["Needed":[], "NotNeeded":[]]
+        employee = ["Needed":[], "NotNeeded":[]]
+        manager = ["Needed":[], "NotNeeded":[]]
+        seasonPassGuest = ["Needed":[], "NotNeeded":[]]
+        seniorGuest = ["Needed":[], "NotNeeded":[]]
+        vendor = ["Needed":[], "NotNeeded":[]]
         datePicker = DatePicker(forTextField: dateOfBirthTextField)
         dateOfBirthTextField.delegate = self
-    }
+        employeeButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
+        managerButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
+        vendorButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
+        }
     
     func resign() {
         dateOfBirthTextField.resignFirstResponder()
@@ -77,6 +101,29 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func GeneratePassPressed(_ sender: UIButton) {
         createAlert()
+    }
+    @IBAction func catButtonPressed(_ sender: UIButton) {
+        sender.titleLabel?.textColor = UIColor.white
+        switch sender {
+        case guestButton:
+            employeeButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
+            managerButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
+            vendorButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
+        case employeeButton:
+            guestButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
+            managerButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
+            vendorButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
+        case managerButton:
+            employeeButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
+            guestButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
+            vendorButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
+        case vendorButton:
+            employeeButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
+            guestButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
+            managerButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
+        default:
+            print("Something went wrong! OOPS!")
+        }
     }
     
     
