@@ -57,10 +57,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
         vendor = ["Needed":[], "NotNeeded":[]]
         datePicker = DatePicker(forTextField: dateOfBirthTextField)
         dateOfBirthTextField.delegate = self
-        employeeButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
-        managerButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
-        vendorButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
-        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guestButton.setTitleColor(UIColor.white, for: .normal)
+        employeeButton.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
+        managerButton.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
+        vendorButton.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
+    }
     
     func resign() {
         dateOfBirthTextField.resignFirstResponder()
@@ -103,24 +108,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
         createAlert()
     }
     @IBAction func catButtonPressed(_ sender: UIButton) {
-        sender.titleLabel?.textColor = UIColor.white
+        guestButton.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
+        employeeButton.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
+        managerButton.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
+        vendorButton.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
+        sender.setTitleColor(UIColor.white, for: .normal)
         switch sender {
         case guestButton:
-            employeeButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
-            managerButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
-            vendorButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
+            break
         case employeeButton:
-            guestButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
-            managerButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
-            vendorButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
+            break
         case managerButton:
-            employeeButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
-            guestButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
-            vendorButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
+            break
         case vendorButton:
-            employeeButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
-            guestButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
-            managerButton.titleLabel?.textColor = UIColor.white.withAlphaComponent(0.5)
+            break
         default:
             print("Something went wrong! OOPS!")
         }
