@@ -36,27 +36,35 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var managerButton: UIButton!
     @IBOutlet weak var vendorButton: UIButton!
     
-    var classicGuest: [String:[UITextField]]!
-    var VIPGuest: [String:[UITextField]]!
-    var childGuest: [String:[UITextField]]!
-    var employee: [String:[UITextField]]!
-    var manager: [String:[UITextField]]!
-    var seasonPassGuest: [String:[UITextField]]!
-    var seniorGuest: [String:[UITextField]]!
-    var vendor: [String:[UITextField]]!
+    var classicGuest: [UITextField]!
+    var VIPGuest: [UITextField]!
+    var childGuest: [UITextField]!
+    var employee: [UITextField]!
+    var manager: [UITextField]!
+    var seasonPassGuest: [UITextField]!
+    var seniorGuest: [UITextField]!
+    var vendor: [UITextField]!
+    var contractEmployee: [UITextField]!
+    var allTextFields: [UITextField]!
+    
+    let projectNumbers = [1001, 1002, 1003, 2001, 2002]
+    let vendorCompanys = ["Acme", "Orkin", "Fedex", "NW Electrical"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        classicGuest = ["Needed":[], "NotNeeded":[]]
-        VIPGuest = ["Needed":[], "NotNeeded":[]]
-        childGuest = ["Needed":[], "NotNeeded":[]]
-        employee = ["Needed":[], "NotNeeded":[]]
-        manager = ["Needed":[], "NotNeeded":[]]
-        seasonPassGuest = ["Needed":[], "NotNeeded":[]]
-        seniorGuest = ["Needed":[], "NotNeeded":[]]
-        vendor = ["Needed":[], "NotNeeded":[]]
+        allTextFields = [dateOfBirthTextField, firstNameTextField, ssnTextField, stateTextField, projectTextField, streetTextField, companyTextField, lastNameTextField, zipTextField, cityTextField]
+        classicGuest = [firstNameTextField, lastNameTextField]
+        VIPGuest = [firstNameTextField, lastNameTextField]
+        childGuest = [firstNameTextField, lastNameTextField, dateOfBirthTextField]
+        employee = [firstNameTextField, lastNameTextField, streetTextField, cityTextField, stateTextField, zipTextField]
+        manager = [firstNameTextField, lastNameTextField, streetTextField, cityTextField, stateTextField, zipTextField]
+        seasonPassGuest = [firstNameTextField, lastNameTextField, streetTextField, cityTextField, stateTextField, zipTextField]
+        seniorGuest = [firstNameTextField, lastNameTextField, dateOfBirthTextField]
+        vendor = [firstNameTextField, lastNameTextField, companyTextField, dateOfBirthTextField]
+        contractEmployee = [firstNameTextField, lastNameTextField, streetTextField, cityTextField, stateTextField, zipTextField, projectTextField]
         datePicker = DatePicker(forTextField: dateOfBirthTextField)
         dateOfBirthTextField.delegate = self
+        projectTextField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,6 +73,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         employeeButton.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
         managerButton.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
         vendorButton.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
+        for textField in allTextFields {
+            textField.isEnabled = false
+        }
+        for textField in childGuest {
+            textField.isEnabled = true
+        }
     }
     
     func resign() {
@@ -99,13 +113,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
             datePicker?.pick(self, initDate: initDate, dataChanged: dateChangedCallback)
             return false
+        } else if textField == projectTextField {
+            chooseProjectNumber()
+            return false
         } else {
             return true
         }
     }
     
     @IBAction func GeneratePassPressed(_ sender: UIButton) {
-        createAlert()
+        createAlert(withTitle: "Test title", message: "Hey! This is some kind of strange test popup thing!")
     }
     @IBAction func catButtonPressed(_ sender: UIButton) {
         guestButton.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
@@ -115,21 +132,75 @@ class ViewController: UIViewController, UITextFieldDelegate {
         sender.setTitleColor(UIColor.white, for: .normal)
         switch sender {
         case guestButton:
-            break
+            stackButton1.setTitle("Child", for: .normal)
+            stackButton2.setTitle("Adult", for: .normal)
+            stackButton3.setTitle("Senior", for: .normal)
+            stackButton4.setTitle("VIP", for: .normal)
+            stackButton5.setTitle("Season Pass", for: .normal)
+            stackButton5.isHidden = false
+            for textField in allTextFields {
+                textField.isEnabled = false
+            }
+            for textField in childGuest {
+                textField.isEnabled = true
+            }
         case employeeButton:
-            break
+            stackButton1.setTitle("Food Services", for: .normal)
+            stackButton2.setTitle("Ride Services", for: .normal)
+            stackButton3.setTitle("Maintenance", for: .normal)
+            stackButton4.setTitle("Contract Employee", for: .normal)
+            stackButton5.isHidden = true
+            for textField in allTextFields {
+                textField.isEnabled = false
+            }
+            for textField in employee {
+                textField.isEnabled = true
+            }
         case managerButton:
-            break
+            stackButton1.setTitle("", for: .normal)
+            stackButton2.setTitle("", for: .normal)
+            stackButton3.setTitle("", for: .normal)
+            stackButton4.setTitle("", for: .normal)
+            stackButton5.setTitle("", for: .normal)
+            stackButton5.isHidden = false
+            for textField in allTextFields {
+                textField.isEnabled = false
+            }
+            for textField in manager {
+                textField.isEnabled = true
+            }
         case vendorButton:
-            break
+            stackButton1.setTitle("", for: .normal)
+            stackButton2.setTitle("", for: .normal)
+            stackButton3.setTitle("", for: .normal)
+            stackButton4.setTitle("", for: .normal)
+            stackButton5.setTitle("", for: .normal)
+            stackButton5.isHidden = false
+            for textField in allTextFields {
+                textField.isEnabled = false
+            }
+            for textField in vendor {
+                textField.isEnabled = true
+            }
         default:
             print("Something went wrong! OOPS!")
         }
     }
     
+    func chooseProjectNumber() {
+        let alertView = UIAlertController(title: "Choose project number", message: "Please choose a project number from the list below.", preferredStyle: .alert)
+        for number in projectNumbers {
+            let projectAction = UIAlertAction(title: "\(number)", style: .default, handler: { (action) in
+                self.projectTextField.text = action.title
+            })
+            alertView.addAction(projectAction)
+        }
+        present(alertView, animated: true, completion: nil)
+    }
     
-    func createAlert() {
-        let alertView = UIAlertController(title: "TEST", message: "This is a message!", preferredStyle: .alert)
+    
+    func createAlert(withTitle title: String, message: String) {
+        let alertView = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertView.addAction(okAction)
         
