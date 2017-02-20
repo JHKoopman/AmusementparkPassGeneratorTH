@@ -65,6 +65,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         datePicker = DatePicker(forTextField: dateOfBirthTextField)
         dateOfBirthTextField.delegate = self
         projectTextField.delegate = self
+        companyTextField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -116,6 +117,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         } else if textField == projectTextField {
             chooseProjectNumber()
             return false
+        } else if textField == companyTextField {
+            chooseCompany()
+            return false
         } else {
             return true
         }
@@ -130,6 +134,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         managerButton.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
         vendorButton.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
         sender.setTitleColor(UIColor.white, for: .normal)
+        for textField in allTextFields {
+            textField.isEnabled = false
+            textField.text = nil
+        }
         switch sender {
         case guestButton:
             stackButton1.setTitle("Child", for: .normal)
@@ -138,9 +146,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             stackButton4.setTitle("VIP", for: .normal)
             stackButton5.setTitle("Season Pass", for: .normal)
             stackButton5.isHidden = false
-            for textField in allTextFields {
-                textField.isEnabled = false
-            }
             for textField in childGuest {
                 textField.isEnabled = true
             }
@@ -150,9 +155,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             stackButton3.setTitle("Maintenance", for: .normal)
             stackButton4.setTitle("Contract Employee", for: .normal)
             stackButton5.isHidden = true
-            for textField in allTextFields {
-                textField.isEnabled = false
-            }
             for textField in employee {
                 textField.isEnabled = true
             }
@@ -163,9 +165,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             stackButton4.setTitle("", for: .normal)
             stackButton5.setTitle("", for: .normal)
             stackButton5.isHidden = false
-            for textField in allTextFields {
-                textField.isEnabled = false
-            }
+
             for textField in manager {
                 textField.isEnabled = true
             }
@@ -176,9 +176,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             stackButton4.setTitle("", for: .normal)
             stackButton5.setTitle("", for: .normal)
             stackButton5.isHidden = false
-            for textField in allTextFields {
-                textField.isEnabled = false
-            }
             for textField in vendor {
                 textField.isEnabled = true
             }
@@ -194,6 +191,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 self.projectTextField.text = action.title
             })
             alertView.addAction(projectAction)
+        }
+        present(alertView, animated: true, completion: nil)
+    }
+    
+    func chooseCompany() {
+        let alertView = UIAlertController(title: "Choose company", message: "Please choose a company from the list below.", preferredStyle: .alert)
+        for company in vendorCompanys {
+            let companyAction = UIAlertAction(title: "\(company)", style: .default, handler: { (action) in
+                self.companyTextField.text = action.title
+            })
+            alertView.addAction(companyAction)
         }
         present(alertView, animated: true, completion: nil)
     }
