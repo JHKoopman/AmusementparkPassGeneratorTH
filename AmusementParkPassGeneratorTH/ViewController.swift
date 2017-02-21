@@ -131,7 +131,31 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func GeneratePassPressed(_ sender: UIButton) {
-        createAlert(withTitle: "Creating pass!", message: "Creating pass for: \(entrantType)")
+        print("Creating pass for: \(entrantType)")
+        switch entrantType {
+        case .Child:
+            break
+        case .Classic:
+            break
+        case .Contract:
+            break
+        case .Food:
+            break
+        case .Maintenance:
+            break
+        case .Manager:
+            break
+        case .Ride:
+            break
+        case .SeasonPass:
+            break
+        case .Senior:
+            break
+        case .Vendor:
+            break
+        case .VIP:
+            break
+        }
     }
     
     @IBAction func catButtonPressed(_ sender: UIButton) {
