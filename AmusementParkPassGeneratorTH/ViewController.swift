@@ -46,7 +46,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var vendor: [UITextField]!
     var contractEmployee: [UITextField]!
     var allTextFields: [UITextField]!
-    
+    var category: String = "Guest"
+    var entrantType: EntrantType = .Child
     let projectNumbers = [1001, 1002, 1003, 2001, 2002]
     let vendorCompanys = ["Acme", "Orkin", "Fedex", "NW Electrical"]
     
@@ -74,6 +75,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         employeeButton.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
         managerButton.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
         vendorButton.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
+        stackButton2.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
+        stackButton3.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
+        stackButton4.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
+        stackButton5.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
         for textField in allTextFields {
             textField.isEnabled = false
         }
@@ -126,8 +131,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func GeneratePassPressed(_ sender: UIButton) {
-        createAlert(withTitle: "Test title", message: "Hey! This is some kind of strange test popup thing!")
+        createAlert(withTitle: "Creating pass!", message: "Creating pass for: \(entrantType)")
     }
+    
     @IBAction func catButtonPressed(_ sender: UIButton) {
         guestButton.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
         employeeButton.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
@@ -149,6 +155,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
             for textField in childGuest {
                 textField.isEnabled = true
             }
+            entrantType = .Child
+            stackButton2.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
+            stackButton3.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
+            stackButton4.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
+            stackButton5.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
+            stackButton1.setTitleColor(UIColor.white, for: .normal)
+            category = "Guest"
         case employeeButton:
             stackButton1.setTitle("Food Services", for: .normal)
             stackButton2.setTitle("Ride Services", for: .normal)
@@ -158,6 +171,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
             for textField in employee {
                 textField.isEnabled = true
             }
+            entrantType = .Food
+            stackButton2.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
+            stackButton3.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
+            stackButton4.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
+            stackButton5.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
+            stackButton1.setTitleColor(UIColor.white, for: .normal)
+            category = "Employee"
         case managerButton:
             stackButton1.setTitle("", for: .normal)
             stackButton2.setTitle("", for: .normal)
@@ -165,10 +185,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
             stackButton4.setTitle("", for: .normal)
             stackButton5.setTitle("", for: .normal)
             stackButton5.isHidden = false
-
             for textField in manager {
                 textField.isEnabled = true
             }
+            entrantType = .Manager
         case vendorButton:
             stackButton1.setTitle("", for: .normal)
             stackButton2.setTitle("", for: .normal)
@@ -178,6 +198,95 @@ class ViewController: UIViewController, UITextFieldDelegate {
             stackButton5.isHidden = false
             for textField in vendor {
                 textField.isEnabled = true
+            }
+            entrantType = .Vendor
+        default:
+            print("Something went wrong! OOPS!")
+        }
+    }
+    
+    @IBAction func stackButtonPressed(_ sender: UIButton) {
+        stackButton1.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
+        stackButton2.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
+        stackButton3.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
+        stackButton4.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
+        stackButton5.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
+        sender.setTitleColor(UIColor.white, for: .normal)
+        for textfield in allTextFields {
+            textfield.isEnabled = false
+        }
+        switch sender {
+        case stackButton1:
+            switch category {
+            case "Guest":
+                for textField in childGuest {
+                    textField.isEnabled = true
+                }
+                entrantType = .Child
+            case "Employee":
+                for textField in employee {
+                    textField.isEnabled = true
+                }
+                entrantType = .Food
+            default:
+                print("Something went wrong! OOPS!")
+            }
+        case stackButton2:
+            switch category {
+            case "Guest":
+                for textField in classicGuest {
+                    textField.isEnabled = true
+                }
+                entrantType = .Classic
+            case "Employee":
+                for textField in employee {
+                    textField.isEnabled = true
+                }
+                entrantType = .Ride
+            default:
+                print("Something went wrong! OOPS!")
+            }
+        case stackButton3:
+            switch category {
+            case "Guest":
+                for textField in seniorGuest {
+                    textField.isEnabled = true
+                }
+                entrantType = .Senior
+            case "Employee":
+                for textField in employee {
+                    textField.isEnabled = true
+                }
+                entrantType = .Maintenance
+            default:
+                print("Something went wrong! OOPS!")
+            }
+        case stackButton4:
+            switch category {
+            case "Guest":
+                for textField in VIPGuest {
+                    textField.isEnabled = true
+                }
+                entrantType = .VIP
+            case "Employee":
+                for textField in contractEmployee {
+                    textField.isEnabled = true
+                }
+                entrantType = .Contract
+            default:
+                print("Something went wrong! OOPS!")
+            }
+        case stackButton5:
+            switch category {
+            case "Guest":
+                for textField in seasonPassGuest {
+                    textField.isEnabled = true
+                }
+                entrantType = .SeasonPass
+            case "Employee":
+                print("There's no employee button!")
+            default:
+                print("Something went wrong! OOPS!")
             }
         default:
             print("Something went wrong! OOPS!")
