@@ -168,7 +168,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
             print(swipe(for: entrant))
             print(age)
         case .Vendor:
-            break
+            let entrant = Vendor(firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, adress: streetTextField.text!, city: cityTextField.text!, state: stateTextField.text!, zip: zipTextField.text!, company: companyTextField.text!)
+            print(swipe(for: entrant))
         case .VIP:
             let entrant = Visitor(type: .VIP, firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, adress: nil, city: nil, state: nil, zip: nil)
             print(swipe(for: entrant))

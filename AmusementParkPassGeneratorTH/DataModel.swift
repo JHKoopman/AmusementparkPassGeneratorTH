@@ -64,6 +64,15 @@ protocol Worker: Entrant, Discount { /*Used worker as protocol name here because
     var zip: String { get }
 }
 
+protocol Merchant: Entrant {
+    var firstName: String { get }
+    var lastName: String { get }
+    var adress: String { get }
+    var city: String { get }
+    var state: String { get }
+    var zip: String { get }
+}
+
 protocol Discount {
     var foodDiscount: Percent { get }
     var merchDiscount: Percent { get }
@@ -132,7 +141,7 @@ func swipe(for entrant: Entrant) -> [String: Any] {
         }
         swipeDict.updateValue(employee.foodDiscount, forKey: "foodDiscount")
         swipeDict.updateValue(employee.merchDiscount, forKey: "merchDiscount")
-        swipeDict.updateValue(true, forKey: "ride")
+        if employee.type == .Contract {swipeDict.updateValue(false, forKey: "ride")} else {swipeDict.updateValue(true, forKey: "ride")}
         swipeDict.updateValue(false, forKey: "skip")
         return swipeDict
     } else if let visitor = entrant as? Visitor {
@@ -151,6 +160,15 @@ func swipe(for entrant: Entrant) -> [String: Any] {
         swipeDict.updateValue(manager.foodDiscount, forKey: "foodDiscount")
         swipeDict.updateValue(manager.merchDiscount, forKey: "merchDiscount")
         swipeDict.updateValue(true, forKey: "ride")
+        swipeDict.updateValue(false, forKey: "skip")
+        return swipeDict
+    } else if let vendor = entrant as? Vendor {
+        for x in Area.AllValues {
+            if vendor.areaAccess.contains(x) {swipeDict.updateValue(true, forKey: x.rawValue)} else {swipeDict.updateValue(false, forKey: x.rawValue)}
+        }
+        swipeDict.updateValue(0, forKey: "foodDiscount")
+        swipeDict.updateValue(0, forKey: "merchDiscount")
+        swipeDict.updateValue(false, forKey: "ride")
         swipeDict.updateValue(false, forKey: "skip")
         return swipeDict
     } else {

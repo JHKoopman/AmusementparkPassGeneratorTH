@@ -16,16 +16,16 @@ class Employee: Worker {
     let state: String
     let zip: String
     let areaAccess: [Area]
-    let identifier: String
+    let type: EmployeeType
     
     init(first: String, last: String, adress: String, city: String, state: String, zip: String, type: EmployeeType, projectNumber: String?) {
+        self.type = type
         self.firstName = first
         self.lastName = last
         self.adress = adress
         self.city = city
         self.state = state
         self.zip = zip
-        self.identifier = "Employee \(first)"
         
         switch type { /*Adding area access based on the EmployeeType*/
         case .Food:
