@@ -18,7 +18,7 @@ class Employee: Worker {
     let areaAccess: [Area]
     let identifier: String
     
-    init(first: String, last: String, adress: String, city: String, state: String, zip: String, type: EmployeeType) {
+    init(first: String, last: String, adress: String, city: String, state: String, zip: String, type: EmployeeType, projectNumber: String?) {
         self.firstName = first
         self.lastName = last
         self.adress = adress
@@ -34,6 +34,25 @@ class Employee: Worker {
             self.areaAccess = [Area.Amusement, Area.Maintenance, Area.RideControl]
         case .Ride:
             self.areaAccess = [Area.Amusement, Area.RideControl]
+        case .Contract:
+            if let _projectNumber = projectNumber {
+                switch _projectNumber {
+                case "1001":
+                    self.areaAccess = [Area.Amusement, Area.RideControl]
+                case "1002":
+                    self.areaAccess = [Area.Amusement, Area.RideControl, Area.Maintenance]
+                case "1003":
+                    self.areaAccess = [Area.Amusement, Area.RideControl, Area.Kitchen, Area.Maintenance, Area.Office]
+                case "2001":
+                    self.areaAccess = [Area.Office]
+                case "2002":
+                    self.areaAccess = [Area.Kitchen, Area.Maintenance]
+                default:
+                    self.areaAccess = []
+                }
+            } else {
+                self.areaAccess = []
+            }
         }
         
         do { /*Checking if all data is entered, otherwise throwing an Error*/

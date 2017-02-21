@@ -50,6 +50,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var entrantType: EntrantType = .Child
     let projectNumbers = [1001, 1002, 1003, 2001, 2002]
     let vendorCompanys = ["Acme", "Orkin", "Fedex", "NW Electrical"]
+    var dateOfBirth: Date!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,7 +117,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             let dateChangedCallback : DatePicker.DatePickerCallback = {(newDate : Date, forTextField : UITextField) -> () in
                 forTextField.text = (newDate.ToDateMediumString() ?? "?") as String
+                self.dateOfBirth = newDate
             }
+            
             datePicker?.pick(self, initDate: initDate, dataChanged: dateChangedCallback)
             return false
         } else if textField == projectTextField {
@@ -134,27 +137,41 @@ class ViewController: UIViewController, UITextFieldDelegate {
         print("Creating pass for: \(entrantType)")
         switch entrantType {
         case .Child:
-            break
+            let age = dateOfBirth.age
+            let entrant = Visitor(type: .Child, age: age, firstName: firstNameTextField.text!, lastName: lastNameTextField.text!)
+            print(swipe(for: entrant))
+            print(age)
         case .Classic:
-            break
+            let entrant = Visitor(type: .Classic, firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, adress: nil, city: nil, state: nil, zip: nil)
+            print(swipe(for: entrant))
         case .Contract:
-            break
+            let entrant = Employee(first: firstNameTextField.text!, last: lastNameTextField.text!, adress: streetTextField.text!, city: cityTextField.text!, state: stateTextField.text!, zip: zipTextField.text!, type: .Contract, projectNumber: projectTextField.text!)
+            print(swipe(for: entrant))
         case .Food:
-            break
+            let entrant = Employee(first: firstNameTextField.text!, last: lastNameTextField.text!, adress: streetTextField.text!, city: cityTextField.text!, state: stateTextField.text!, zip: zipTextField.text!, type: .Food, projectNumber: nil)
+            print(swipe(for: entrant))
         case .Maintenance:
-            break
+            let entrant = Employee(first: firstNameTextField.text!, last: lastNameTextField.text!, adress: streetTextField.text!, city: cityTextField.text!, state: stateTextField.text!, zip: zipTextField.text!, type: .Maintenance, projectNumber: nil)
+            print(swipe(for: entrant))
         case .Manager:
-            break
+            let entrant = Manager(first: firstNameTextField.text!, last: lastNameTextField.text!, adress: streetTextField.text!, city: cityTextField.text!, state: stateTextField.text!, zip: zipTextField.text!)
+            print(swipe(for: entrant))
         case .Ride:
-            break
+            let entrant = Employee(first: firstNameTextField.text!, last: lastNameTextField.text!, adress: streetTextField.text!, city: cityTextField.text!, state: stateTextField.text!, zip: zipTextField.text!, type: .Ride, projectNumber: nil)
+            print(swipe(for: entrant))
         case .SeasonPass:
-            break
+            let entrant = Visitor(type: .SeasonPass, firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, adress: streetTextField.text!, city: cityTextField.text!, state: stateTextField.text!, zip: zipTextField.text!)
+            print(swipe(for: entrant))
         case .Senior:
-            break
+            let age = dateOfBirth.age
+            let entrant = Visitor(type: .Senior, age: age, firstName: firstNameTextField.text!, lastName: lastNameTextField.text!)
+            print(swipe(for: entrant))
+            print(age)
         case .Vendor:
             break
         case .VIP:
-            break
+            let entrant = Visitor(type: .VIP, firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, adress: nil, city: nil, state: nil, zip: nil)
+            print(swipe(for: entrant))
         }
     }
     

@@ -25,7 +25,7 @@ enum ErrorType: Error {
 }
 
 enum EmployeeType {
-    case Food, Ride, Maintenance
+    case Food, Ride, Maintenance, Contract
 }
 
 enum GuestType {
@@ -110,6 +110,13 @@ extension Date {
         return formatter.string(from: self) as NSString?
     }
 }
+
+extension Date {
+    var age: Int {
+        return Calendar.current.dateComponents([.year], from: self, to: Date()).year!
+    }
+}
+
 
 
 //MARK: Swipe method

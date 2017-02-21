@@ -23,21 +23,49 @@ class Visitor: Guest, Discount {
     }
     let type: GuestType
     let age: Age?
-    let identifier: String
-    
-    init(type: GuestType, identifier: String) { /*Init for classic or VIP guests, no extra information needed*/
+    let firstName: String
+    let lastName: String
+    let adress: String?
+    let city: String?
+    let state: String?
+    let zip: String?
+
+    init(type: GuestType, firstName: String, lastName: String, adress: String?, city: String?, state: String?, zip: String?) { /*Init for classic or VIP guests, no extra information needed*/
         self.type = type
-        self.identifier = identifier
         self.age = nil
+        self.firstName = firstName
+        self.lastName = lastName
+        self.adress = adress
+        self.city = city
+        self.state = state
+        self.zip = zip
     }
-    init(age: Age, identifier: String) { /*Init for Child guests, if a age above 5 is passed in the pass will be converted into a Classic pass*/
-        if age <= 5 {
-            self.type = .Child
-        } else {
+    
+    init(type: GuestType, age: Age, firstName: String, lastName: String) { /*Init for Child guests, if a age above 5 is passed in the pass will be converted into a Classic pass*/
+        switch type {
+        case .Child:
+            if age < 5 {
+                self.type = .Child
+            } else {
+                print("Person is too old to get a child pass, converting to a Classic pass")
+                self.type = .Classic
+            }
+        case .Senior:
+            if age > 65 {
+                self.type = .Senior
+            } else {
+                print("Person is too young to get a senior pass, converting to a Classic pass")
+                self.type = .Classic
+            }
+        default:
             self.type = .Classic
-            print("The age too high to get a Child pass! The pass is converted into a Classic pass!")
         }
         self.age = age
-        self.identifier = identifier
+        self.firstName = firstName
+        self.lastName = lastName
+        self.adress = nil
+        self.city = nil
+        self.state = nil
+        self.zip = nil
     }
 }
