@@ -20,6 +20,7 @@
 		0886F9B51E4A3B9600E01641 /* PopDateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0886F9B41E4A3B9600E01641 /* PopDateViewController.xib */; };
 		0886F9B71E4A3D3400E01641 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0886F9B61E4A3D3400E01641 /* DateViewController.swift */; };
 		088EF6911E48DBCB00D921FB /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088EF6901E48DBCB00D921FB /* TextField.swift */; };
+		089812AD1E5D9C2B0010711E /* PassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089812AC1E5D9C2B0010711E /* PassViewController.swift */; };
 		08F250B01E5CB5EF000C7355 /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F250AF1E5CB5EF000C7355 /* Vendor.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		0886F9B41E4A3B9600E01641 /* PopDateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopDateViewController.xib; sourceTree = "<group>"; };
 		0886F9B61E4A3D3400E01641 /* DateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 		088EF6901E48DBCB00D921FB /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		089812AC1E5D9C2B0010711E /* PassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassViewController.swift; sourceTree = "<group>"; };
 		08F250AF1E5CB5EF000C7355 /* Vendor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vendor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				08050B6C1DFC045200BF0D44 /* ViewController.swift */,
+				089812AC1E5D9C2B0010711E /* PassViewController.swift */,
 				08050B6E1DFC045200BF0D44 /* Main.storyboard */,
 				080C8C181E4B437A00C0B03E /* Classes */,
 				080C8C171E4B436100C0B03E /* Supporting files */,
@@ -195,6 +198,7 @@
 				0864FD7B1E2FE6CB0060AE83 /* Employee.swift in Sources */,
 				088EF6911E48DBCB00D921FB /* TextField.swift in Sources */,
 				08050B6B1DFC045200BF0D44 /* AppDelegate.swift in Sources */,
+				089812AD1E5D9C2B0010711E /* PassViewController.swift in Sources */,
 				0864FD7F1E2FE71E0060AE83 /* Visitor.swift in Sources */,
 				08F250B01E5CB5EF000C7355 /* Vendor.swift in Sources */,
 				08050B7D1DFC04D500BF0D44 /* DataModel.swift in Sources */,

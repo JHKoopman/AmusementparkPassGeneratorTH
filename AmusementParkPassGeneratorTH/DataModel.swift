@@ -78,6 +78,10 @@ protocol Discount {
     var merchDiscount: Percent { get }
 }
 
+protocol createNewPassDelegate {
+    func createNewPassPressed()
+}
+
 //MARK: Extensions
 //Adding default values
 extension Worker {
