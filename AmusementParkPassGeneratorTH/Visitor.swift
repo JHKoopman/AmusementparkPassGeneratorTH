@@ -29,6 +29,8 @@ class Visitor: Guest, Discount {
     let city: String?
     let state: String?
     let zip: String?
+    let delegate: errorHandler = ViewController()
+
 
     init(type: GuestType, firstName: String, lastName: String, adress: String?, city: String?, state: String?, zip: String?) { /*Init for classic or VIP guests, no extra information needed*/
         self.type = type

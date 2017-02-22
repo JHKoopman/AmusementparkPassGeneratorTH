@@ -82,6 +82,10 @@ protocol createNewPassDelegate {
     func createNewPassPressed()
 }
 
+protocol errorHandler {
+    func errorAppeared(title: String, description: String)
+}
+
 //MARK: Extensions
 //Adding default values
 extension Worker {

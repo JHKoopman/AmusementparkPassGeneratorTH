@@ -102,8 +102,8 @@
 				0864FD7A1E2FE6CB0060AE83 /* Employee.swift */,
 				0864FD7E1E2FE71E0060AE83 /* Visitor.swift */,
 				0864FD801E2FE7390060AE83 /* Manager.swift */,
-				088EF6901E48DBCB00D921FB /* TextField.swift */,
 				08F250AF1E5CB5EF000C7355 /* Vendor.swift */,
+				088EF6901E48DBCB00D921FB /* TextField.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";

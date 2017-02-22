@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate, createNewPassDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, createNewPassDelegate, errorHandler {
     
     //MARK: Variables and constants
     
@@ -378,6 +378,9 @@ class ViewController: UIViewController, UITextFieldDelegate, createNewPassDelega
         present(alertView, animated: true, completion: nil)
     }
     
+    func errorAppeared(title: String, description: String) {
+        createAlert(withTitle: title, message: description)
+    }
     
     func createAlert(withTitle title: String, message: String) {
         let alertView = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -406,5 +409,5 @@ class ViewController: UIViewController, UITextFieldDelegate, createNewPassDelega
     
     func createNewPassPressed() {
         catButtonPressed(guestButton)
-    }   
+    }
 }

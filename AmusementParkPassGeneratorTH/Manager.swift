@@ -16,6 +16,8 @@ class Manager: Administrator {
     let state: String
     let zip: String
     let identifier: String
+    let delegate: errorHandler = ViewController()
+
     
     init(first: String, last: String, adress: String, city: String, state: String, zip: String) {
         self.firstName = first
