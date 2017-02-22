@@ -33,7 +33,7 @@ enum GuestType {
 }
 
 enum EntrantType {
-    case Classic, Child, VIP, Senior, SeasonPass, Food, Ride, Maintenance, Manager, Contract, Vendor
+    case Classic, Child, VIP, Senior, SeasonPass, Food, Ride, Maintenance, Manager, Contract, Vendor, Invalid
 }
 
 //MARK: Protocols
