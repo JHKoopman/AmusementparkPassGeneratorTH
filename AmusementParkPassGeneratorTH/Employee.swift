@@ -17,7 +17,6 @@ class Employee: Worker {
     let zip: String
     let areaAccess: [Area]
     let type: EmployeeType
-    let delegate: errorHandler = ViewController()
     
     init(first: String, last: String, adress: String, city: String, state: String, zip: String, type: EmployeeType, projectNumber: String?) {
         self.type = type
@@ -60,22 +59,16 @@ class Employee: Worker {
             try validateData(first: first, last: last, adress: adress, city: city, state: state, zip: zip)
         } catch ErrorType.MissingFirstName {
             print("First name is missing! Please fill in a first name and try again!")
-            delegate.errorAppeared(title: "First name is missing!", description: "Please fill in a first name and try again!")
         } catch ErrorType.MissingLastName {
             print("Last name is missing! Please fill in a first name and try again!")
-            delegate.errorAppeared(title: "Last name is missing!", description: "Please fill in a first name and try again!")
         } catch ErrorType.MissingAdress {
             print("Adress is missing! Please fill in an adress and try again!")
-            delegate.errorAppeared(title: "Adress is missing!", description: "Please fill in an adress and try again!")
         } catch ErrorType.MissingCity {
             print("City is missing! Please fill in a city and try again!")
-            delegate.errorAppeared(title: "City is missing!", description: "Please fill in a city and try again!")
         } catch ErrorType.MissingState {
             print("State is missing! Please fill in a state and try again!")
-            delegate.errorAppeared(title: "State is missing!", description: "Please fill in a state and try again!")
         } catch ErrorType.MissingZIP {
             print("ZIP is missing! Please fill in a ZIP and try again!")
-            delegate.errorAppeared(title: "ZIP is missing!", description: "Please fill in a ZIP and try again!")
         } catch {
             fatalError("Something went wrong!")
         }

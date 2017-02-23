@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate, createNewPassDelegate, errorHandler {
+class ViewController: UIViewController, UITextFieldDelegate, createNewPassDelegate {
     
     //MARK: Variables and constants
     
@@ -174,7 +174,6 @@ class ViewController: UIViewController, UITextFieldDelegate, createNewPassDelega
     }
     
     @IBAction func GeneratePassPressed(_ sender: UIButton) {
-        print("Creating pass for: \(entrantType)")
         var emptyTextfields = false
         for textField in allTextFields {
             if textField.isEnabled {
@@ -192,50 +191,37 @@ class ViewController: UIViewController, UITextFieldDelegate, createNewPassDelega
         case .Child:
             let age = dateOfBirth.age
             entrant = Visitor(type: .Child, age: age, firstName: firstNameTextField.text!, lastName: lastNameTextField.text!)
-            print(swipe(for: entrant))
-            print(age)
             performSegue(withIdentifier: "showPass", sender: swipe(for: entrant))
         case .Classic:
             entrant = Visitor(type: .Classic, firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, adress: nil, city: nil, state: nil, zip: nil)
-            print(swipe(for: entrant))
             performSegue(withIdentifier: "showPass", sender: swipe(for: entrant))
         case .Contract:
             entrant = Employee(first: firstNameTextField.text!, last: lastNameTextField.text!, adress: streetTextField.text!, city: cityTextField.text!, state: stateTextField.text!, zip: zipTextField.text!, type: .Contract, projectNumber: projectTextField.text!)
-            print(swipe(for: entrant))
             performSegue(withIdentifier: "showPass", sender: swipe(for: entrant))
         case .Food:
             entrant = Employee(first: firstNameTextField.text!, last: lastNameTextField.text!, adress: streetTextField.text!, city: cityTextField.text!, state: stateTextField.text!, zip: zipTextField.text!, type: .Food, projectNumber: nil)
-            print(swipe(for: entrant))
             performSegue(withIdentifier: "showPass", sender: swipe(for: entrant))
         case .Maintenance:
             entrant = Employee(first: firstNameTextField.text!, last: lastNameTextField.text!, adress: streetTextField.text!, city: cityTextField.text!, state: stateTextField.text!, zip: zipTextField.text!, type: .Maintenance, projectNumber: nil)
-            print(swipe(for: entrant))
             performSegue(withIdentifier: "showPass", sender: swipe(for: entrant))
         case .Manager:
             entrant = Manager(first: firstNameTextField.text!, last: lastNameTextField.text!, adress: streetTextField.text!, city: cityTextField.text!, state: stateTextField.text!, zip: zipTextField.text!)
-            print(swipe(for: entrant))
             performSegue(withIdentifier: "showPass", sender: swipe(for: entrant))
         case .Ride:
             entrant = Employee(first: firstNameTextField.text!, last: lastNameTextField.text!, adress: streetTextField.text!, city: cityTextField.text!, state: stateTextField.text!, zip: zipTextField.text!, type: .Ride, projectNumber: nil)
-            print(swipe(for: entrant))
             performSegue(withIdentifier: "showPass", sender: swipe(for: entrant))
         case .SeasonPass:
             entrant = Visitor(type: .SeasonPass, firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, adress: streetTextField.text!, city: cityTextField.text!, state: stateTextField.text!, zip: zipTextField.text!)
-            print(swipe(for: entrant))
             performSegue(withIdentifier: "showPass", sender: swipe(for: entrant))
         case .Senior:
             let age = dateOfBirth.age
             entrant = Visitor(type: .Senior, age: age, firstName: firstNameTextField.text!, lastName: lastNameTextField.text!)
-            print(swipe(for: entrant))
-            print(age)
             performSegue(withIdentifier: "showPass", sender: swipe(for: entrant))
         case .Vendor:
             entrant = Vendor(firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, adress: streetTextField.text!, city: cityTextField.text!, state: stateTextField.text!, zip: zipTextField.text!, company: companyTextField.text!)
-            print(swipe(for: entrant))
             performSegue(withIdentifier: "showPass", sender: swipe(for: entrant))
         case .VIP:
             entrant = Visitor(type: .VIP, firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, adress: nil, city: nil, state: nil, zip: nil)
-            print(swipe(for: entrant))
             performSegue(withIdentifier: "showPass", sender: swipe(for: entrant))
         case .Invalid:
             break
@@ -422,10 +408,6 @@ class ViewController: UIViewController, UITextFieldDelegate, createNewPassDelega
             alertView.addAction(companyAction)
         }
         present(alertView, animated: true, completion: nil)
-    }
-    
-    func errorAppeared(title: String, description: String) {
-        createAlert(withTitle: title, message: description)
     }
     
     func createAlert(withTitle title: String, message: String) {

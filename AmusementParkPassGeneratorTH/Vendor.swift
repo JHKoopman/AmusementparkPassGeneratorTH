@@ -16,7 +16,6 @@ class Vendor: Merchant {
     var lastName: String
     var state: String
     var zip: String
-    let delegate: errorHandler = ViewController()
 
     
     init(firstName: String, lastName: String, adress: String, city: String, state: String, zip: String, company: String) {
