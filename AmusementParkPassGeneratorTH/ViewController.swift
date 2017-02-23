@@ -132,19 +132,59 @@ class ViewController: UIViewController, UITextFieldDelegate, createNewPassDelega
             return true
         }
     }
+    @IBAction func populateData(_ sender: UIButton) {
+        switch entrantType {
+        case .Classic, .VIP:
+            firstNameTextField.text = "John"
+            lastNameTextField.text = "Cena"
+        case .Food, .Maintenance, .Ride, .SeasonPass, .Manager:
+            firstNameTextField.text = "Jack"
+            lastNameTextField.text = "Black"
+            streetTextField.text = "Somestreet 12"
+            cityTextField.text = "New-York City"
+            stateTextField.text = "New York"
+            zipTextField.text = "10024"
+        case .Child:
+            firstNameTextField.text = "Harry"
+            lastNameTextField.text = "Potter"
+            dateOfBirth = Date(timeIntervalSinceNow: -4 * 60 * 60 * 24 * 365)
+            dateOfBirthTextField.text = dateOfBirth.ToDateMediumString() as String?
+        case .Senior:
+            firstNameTextField.text = "Betty"
+            lastNameTextField.text = "Black"
+            dateOfBirth = Date(timeIntervalSince1970: -18 * 60 * 60 * 24 * 365)
+            dateOfBirthTextField.text = dateOfBirth.ToDateMediumString() as String?
+        case .Contract:
+            projectTextField.text = "\(projectNumbers[3])"
+            firstNameTextField.text = "Jack"
+            lastNameTextField.text = "Black"
+            streetTextField.text = "Somestreet 12"
+            cityTextField.text = "New-York City"
+            stateTextField.text = "New York"
+            zipTextField.text = "10024"
+        case .Vendor:
+            firstNameTextField.text = "Frank"
+            lastNameTextField.text = "Frankly"
+            dateOfBirth = Date(timeIntervalSinceNow: -36 * 60 * 60 * 24 * 365)
+            dateOfBirthTextField.text = dateOfBirth.ToDateMediumString() as String?
+            companyTextField.text = vendorCompanys[2]
+        case .Invalid:
+            break
+        }
+    }
     
     @IBAction func GeneratePassPressed(_ sender: UIButton) {
         print("Creating pass for: \(entrantType)")
-        var noEmptyTextfields = true
+        var emptyTextfields = false
         for textField in allTextFields {
             if textField.isEnabled {
                 if textField.text == "" {
-                    noEmptyTextfields = false
+                    emptyTextfields = false
                     self.entrantType = .Invalid
                 }
             }
         }
-        if noEmptyTextfields == false {
+        if emptyTextfields {
             createAlert(withTitle: "Please fill in all requred data!", message: "Not all required textfields are filled in! Please make sure to do so and try again!")
         }
         var entrant: Entrant

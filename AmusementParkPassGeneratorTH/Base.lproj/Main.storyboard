@@ -372,6 +372,9 @@
                                 <state key="normal" title="Populate Data">
                                     <color key="titleColor" red="0.1764705882352941" green="0.51372549019607838" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="populateData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tdD-n0-qHY"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.83921568627450982" green="0.81568627450980391" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
